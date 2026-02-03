@@ -5,6 +5,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { gallery } from '../data/content'
 import { DecorativeFlower, DecorativeGlow } from './DecorativeLayer'
+import SectionDivider from './SectionDivider'
 
 const images = [
   { src: '/image/ronir-jule-1.jpeg', alt: 'Ronir and Jule' },
@@ -28,25 +29,13 @@ export default function Gallery() {
     >
       {/* Subtle bg-2 layer */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.12]"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.12] md:bg-[position:50%_35%] lg:bg-[position:50%_30%]"
         style={{ backgroundImage: "url('/image/bg-2.jpeg')" }}
       />
 
       {/* Section dividers */}
-      <img
-        data-layer="deco"
-        src="/image/element-top-flower-bg.png"
-        alt=""
-        className="absolute left-0 top-0 w-full max-w-2xl opacity-[0.14] md:max-w-3xl"
-        aria-hidden
-      />
-      <img
-        data-layer="deco"
-        src="/image/element-top-flower-bg.png"
-        alt=""
-        className="absolute bottom-0 left-0 w-full max-w-2xl rotate-180 opacity-[0.1] md:max-w-3xl"
-        aria-hidden
-      />
+      <SectionDivider className="opacity-[0.14]" />
+      <SectionDivider position="bottom" className="opacity-[0.1]" />
 
       {/* Flowers — corners */}
       <DecorativeFlower

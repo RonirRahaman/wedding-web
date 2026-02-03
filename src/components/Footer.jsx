@@ -3,6 +3,7 @@
  */
 import { motion } from 'framer-motion'
 import { DecorativeFlower, DecorativeGlow } from './DecorativeLayer'
+import SectionDivider from './SectionDivider'
 import { couple, thankYouMessage, footer, rsvp } from '../data/content'
 
 const ease = [0.22, 1, 0.36, 1]
@@ -14,19 +15,13 @@ export default function Footer() {
       aria-labelledby="thanks-heading"
     >
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-[position:50%_32%] lg:bg-[position:50%_26%]"
         style={{ backgroundImage: "url('/image/bg-1.jpeg')" }}
       />
       <div className="absolute inset-0 bg-stone-900/55" />
 
       {/* Section divider */}
-      <img
-        data-layer="deco"
-        src="/image/element-top-flower-bg.png"
-        alt=""
-        className="absolute left-0 top-0 w-full max-w-2xl opacity-[0.14] md:max-w-3xl"
-        aria-hidden
-      />
+      <SectionDivider className="opacity-[0.14]" />
 
       {/* Flowers — all corners */}
       <DecorativeFlower

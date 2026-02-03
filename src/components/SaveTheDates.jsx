@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { events } from '../data/events'
 import { saveTheDates } from '../data/content'
 import { DecorativeFlower, DecorativeGlow } from './DecorativeLayer'
+import SectionDivider from './SectionDivider'
 
 function formatDate(str) {
   const d = new Date(str + 'T12:00:00')
@@ -33,20 +34,8 @@ export default function SaveTheDates() {
       aria-labelledby="dates-heading"
     >
       {/* Section dividers */}
-      <img
-        data-layer="deco"
-        src="/image/element-top-flower-bg.png"
-        alt=""
-        className="absolute left-0 top-0 w-full max-w-2xl opacity-[0.11] md:max-w-3xl"
-        aria-hidden
-      />
-      <img
-        data-layer="deco"
-        src="/image/element-top-flower-bg.png"
-        alt=""
-        className="absolute bottom-0 left-0 w-full max-w-2xl rotate-180 opacity-[0.08] md:max-w-3xl"
-        aria-hidden
-      />
+      <SectionDivider className="opacity-[0.11]" />
+      <SectionDivider position="bottom" className="opacity-[0.08]" />
 
       {/* element.png — both sides */}
       <img

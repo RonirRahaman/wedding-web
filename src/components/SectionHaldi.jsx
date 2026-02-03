@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useIsHaldiDay } from '../hooks/useIsHaldiDay'
 import { events } from '../data/events'
 import { DecorativeFlower, DecorativeGlow } from './DecorativeLayer'
+import SectionDivider from './SectionDivider'
 
 const haldi = events.find((e) => e.id === 'haldi')
 const formatDate = (str) =>
@@ -24,20 +25,8 @@ export default function SectionHaldi() {
       aria-labelledby="haldi-heading"
     >
       {/* Section dividers */}
-      <img
-        data-layer="deco"
-        src="/image/element-top-flower-bg.png"
-        alt=""
-        className="absolute left-0 top-0 w-full max-w-2xl opacity-[0.12] md:max-w-3xl"
-        aria-hidden
-      />
-      <img
-        data-layer="deco"
-        src="/image/element-top-flower-bg.png"
-        alt=""
-        className="absolute bottom-0 left-0 w-full max-w-2xl rotate-180 opacity-[0.09] md:max-w-3xl"
-        aria-hidden
-      />
+      <SectionDivider className="opacity-[0.12]" />
+      <SectionDivider position="bottom" className="opacity-[0.09]" />
 
       {/* Flowers — corners */}
       <DecorativeFlower
@@ -162,16 +151,6 @@ export default function SectionHaldi() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.22 }}
             transition={{ duration: 0.85, ease }}
-          />
-          <motion.img
-            src="/image/sun-glasses.png"
-            alt=""
-            className="absolute left-1/2 top-1/2 z-10 max-h-14 w-auto -translate-x-1/2 -translate-y-1/2 object-contain sm:max-h-16 md:max-h-[4.5rem]"
-            loading="lazy"
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.22 }}
-            transition={{ duration: 0.7, delay: 0.15, ease }}
           />
           <motion.img
             src={haldi.assets.right}

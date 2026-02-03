@@ -4,6 +4,7 @@
 import { motion } from 'framer-motion'
 import Countdown from './Countdown'
 import { DecorativeFlower, DecorativeGlow } from './DecorativeLayer'
+import SectionDivider from './SectionDivider'
 import { couple, hero } from '../data/content'
 
 const fadeIn = {
@@ -19,27 +20,14 @@ export default function Hero() {
       aria-labelledby="hero-heading"
     >
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-[position:50%_28%] lg:bg-[position:50%_22%]"
         style={{ backgroundImage: "url('/image/bg-1.jpeg')" }}
       />
       <div className="absolute inset-0 bg-stone-900/40 md:bg-stone-900/35" />
 
-      {/* Top divider */}
-      <img
-        data-layer="deco"
-        src="/image/element-top-flower-bg.png"
-        alt=""
-        className="absolute left-0 top-0 w-full max-w-2xl opacity-[0.14] sm:opacity-[0.16] md:max-w-3xl"
-        aria-hidden
-      />
-      {/* Bottom divider */}
-      <img
-        data-layer="deco"
-        src="/image/element-top-flower-bg.png"
-        alt=""
-        className="absolute bottom-0 left-0 w-full max-w-2xl rotate-180 opacity-[0.1] md:max-w-3xl"
-        aria-hidden
-      />
+      {/* Section dividers */}
+      <SectionDivider className="opacity-[0.14] sm:opacity-[0.16]" />
+      <SectionDivider position="bottom" className="opacity-[0.1]" />
 
       {/* Flowers — corners */}
       <DecorativeFlower
