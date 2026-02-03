@@ -17,7 +17,7 @@ export const events = [
     feeling: 'Playful. Sacred. Full of light.',
     /** One line for cards / emphasis */
     poeticLine: 'Where yellow meets joy.',
-    assets: { left: '/image/girl-haldi0.png', right: '/image/man-haldi.png' },
+    assets: { left: '/image/girl-haldi.png', right: '/image/man-haldi.png' },
   },
   {
     id: 'shadi',
