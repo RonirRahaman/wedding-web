@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero-lg': ['clamp(1.75rem, 5vw, 2.25rem)', { lineHeight: '1.2' }],

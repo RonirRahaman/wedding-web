@@ -4,7 +4,7 @@
 import { motion } from 'framer-motion'
 import { events } from '../data/events'
 import VenueMap from './VenueMap'
-import { DecorativeFlower, DecorativeGlow } from './DecorativeLayer'
+import { DecorativeFlower } from './DecorativeLayer'
 import SectionDivider from './SectionDivider'
 
 const boubhat = events.find((e) => e.id === 'boubhat')
@@ -14,6 +14,7 @@ const formatDate = (str) =>
     month: 'long',
     year: 'numeric',
   })
+const boubhatMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(boubhat.address)}`
 const ease = [0.22, 1, 0.36, 1]
 
 export default function SectionBoubhat() {
@@ -22,66 +23,36 @@ export default function SectionBoubhat() {
       className="relative overflow-hidden bg-amber-50/80 px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28"
       aria-labelledby="boubhat-heading"
     >
-      {/* Section dividers */}
-      <SectionDivider className="opacity-[0.12]" />
-      <SectionDivider position="bottom" className="opacity-[0.09]" />
+      <SectionDivider className="opacity-[0.1]" />
+      <SectionDivider position="bottom" className="opacity-[0.07]" />
 
-      {/* food-greet as corner accents */}
       <img
         data-layer="deco"
         src={boubhat.asset}
         alt=""
-        className="absolute bottom-20 left-0 max-h-24 w-auto opacity-[0.12] sm:max-h-28 md:max-h-32"
+        className="absolute bottom-20 left-0 max-h-20 w-auto opacity-[0.18] sm:max-h-24 md:max-h-28"
         aria-hidden
       />
       <img
         data-layer="deco"
         src={boubhat.asset}
         alt=""
-        className="absolute bottom-20 right-0 max-h-24 w-auto scale-x-[-1] opacity-[0.12] sm:max-h-28 md:max-h-32"
+        className="absolute bottom-20 right-0 max-h-20 w-auto scale-x-[-1] opacity-[0.18] sm:max-h-24 md:max-h-28"
         aria-hidden
       />
 
-      {/* Flowers */}
       <DecorativeFlower
         src="/image/element-flower.png"
-        className="left-4 top-24 max-w-[62px] opacity-[0.11] md:left-8 md:top-28 md:max-w-[78px]"
+        className="left-4 top-24 max-w-[58px] opacity-[0.3] md:left-8 md:top-28 md:max-w-[72px]"
       />
       <DecorativeFlower
         src="/image/element-flower2.png"
-        className="bottom-36 right-4 max-w-[66px] opacity-[0.11] md:right-8 md:max-w-[82px]"
-      />
-      <img
-        data-layer="deco"
-        src="/image/element-flower3.png"
-        alt=""
-        className="absolute left-4 top-1/2 max-w-[50px] -translate-y-1/2 opacity-[0.09] md:max-w-[62px]"
-        aria-hidden
-      />
-      <img
-        data-layer="deco"
-        src="/image/element-flower.png"
-        alt=""
-        className="absolute right-4 top-1/3 max-w-[54px] opacity-[0.09] md:max-w-[68px]"
-        aria-hidden
-      />
-
-      {/* element.png + glow */}
-      <img
-        data-layer="deco"
-        src="/image/element.png"
-        alt=""
-        className="absolute left-1/2 top-20 w-44 -translate-x-1/2 opacity-[0.08] md:w-56"
-        aria-hidden
-      />
-      <DecorativeGlow
-        src="/image/element-light.png"
-        className="left-1/2 top-1/2 max-w-[150px] -translate-x-1/2 -translate-y-1/2 opacity-[0.1] md:max-w-[190px]"
+        className="bottom-36 right-4 max-w-[60px] opacity-[0.08] md:right-8 md:max-w-[76px] md:opacity-[0.06]"
       />
 
       <div className="relative z-10 mx-auto max-w-3xl">
         <motion.p
-          className="mb-4 text-center text-[10px] uppercase tracking-[0.25em] text-amber-700/70 sm:mb-5 sm:text-xs"
+          className="mb-4 text-center font-body text-[10px] font-medium uppercase tracking-[0.25em] text-amber-700/70 sm:mb-5 sm:text-xs"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -110,7 +81,7 @@ export default function SectionBoubhat() {
         </motion.p>
 
         <motion.p
-          className="mx-auto mt-8 max-w-xl text-center font-serif text-[15px] leading-loose text-stone-600 sm:mt-10 sm:text-base md:mt-12"
+          className="mx-auto mt-8 max-w-xl text-center font-body text-[15px] leading-loose text-stone-600 sm:mt-10 sm:text-base md:mt-12"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.18 }}
@@ -166,10 +137,18 @@ export default function SectionBoubhat() {
             address={boubhat.address}
           />
         </motion.div>
-        <p className="mt-4 text-center text-sm font-medium text-stone-700 sm:mt-5 sm:text-base">
+        <a
+          href={boubhatMapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-amber-500 px-5 py-3 font-body text-sm font-semibold text-stone-900 transition hover:bg-amber-400 active:scale-[0.98] sm:mt-5"
+        >
+          View on Map
+        </a>
+        <p className="mt-2 text-center font-body text-sm font-medium text-stone-700 sm:mt-3 sm:text-base">
           {boubhat.venue}
         </p>
-        <p className="mt-1 text-center text-xs leading-relaxed text-stone-600 sm:text-sm md:px-4">
+        <p className="mt-1 text-center font-body text-xs leading-relaxed text-stone-600 sm:text-sm md:px-4">
           {boubhat.address}
         </p>
       </div>

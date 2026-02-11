@@ -5,6 +5,7 @@
 import SmoothScroll from './components/Layout/SmoothScroll'
 import ScrollProgress from './components/Layout/ScrollProgress'
 import CelebrationEffect from './components/CelebrationEffect'
+import MobileNav from './components/MobileNav'
 import Hero from './components/Hero'
 import Greeting from './components/Greeting'
 import MeetCouple from './components/MeetCouple'
@@ -26,7 +27,8 @@ export default function App() {
       </a>
       <ScrollProgress />
       <CelebrationEffect />
-      <main id="main">
+      <MobileNav />
+      <main id="main" className="pb-20 md:pb-0">
         <Hero />
         <Greeting />
         <MeetCouple />

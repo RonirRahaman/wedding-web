@@ -10,12 +10,12 @@ export default function ScrollProgress() {
 
   return (
     <div
-      className="fixed left-0 top-0 z-[100] h-1 w-full bg-amber-200/80 sm:h-0.5"
+      className="fixed left-0 top-0 z-[100] h-1 w-full bg-amber-200/80 md:h-1.5"
       role="presentation"
       aria-hidden="true"
     >
       <motion.div
-        className="h-full origin-left bg-amber-400/90"
+        className="h-full origin-left bg-amber-500/90"
         style={{ width: '100%' }}
         initial={false}
         animate={{ scaleX: progress }}

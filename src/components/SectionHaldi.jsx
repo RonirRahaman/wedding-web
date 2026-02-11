@@ -4,7 +4,7 @@
 import { motion } from 'framer-motion'
 import { useIsHaldiDay } from '../hooks/useIsHaldiDay'
 import { events } from '../data/events'
-import { DecorativeFlower, DecorativeGlow } from './DecorativeLayer'
+import { DecorativeFlower } from './DecorativeLayer'
 import SectionDivider from './SectionDivider'
 
 const haldi = events.find((e) => e.id === 'haldi')
@@ -24,61 +24,31 @@ export default function SectionHaldi() {
       className="relative overflow-hidden bg-amber-50/90 px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28"
       aria-labelledby="haldi-heading"
     >
-      {/* Section dividers */}
-      <SectionDivider className="opacity-[0.12]" />
-      <SectionDivider position="bottom" className="opacity-[0.09]" />
+      <SectionDivider className="opacity-[0.1]" />
+      <SectionDivider position="bottom" className="opacity-[0.07]" />
 
-      {/* Flowers — corners */}
       <DecorativeFlower
         src="/image/element-flower.png"
-        className="left-4 top-24 max-w-[64px] opacity-[0.11] md:left-8 md:top-28 md:max-w-[80px]"
+        className="left-4 top-24 max-w-[60px] opacity-[0.08] md:left-8 md:top-28 md:max-w-[72px] md:opacity-[0.06]"
       />
       <DecorativeFlower
         src="/image/element-flower2.png"
-        className="bottom-28 right-4 max-w-[68px] opacity-[0.11] md:right-8 md:bottom-36 md:max-w-[84px]"
-      />
-      <img
-        data-layer="deco"
-        src="/image/element-flower3.png"
-        alt=""
-        className="absolute bottom-20 left-4 max-w-[52px] opacity-[0.1] md:left-8 md:max-w-[64px]"
-        aria-hidden
-      />
-      <img
-        data-layer="deco"
-        src="/image/element-flower.png"
-        alt=""
-        className="absolute right-4 top-1/3 max-w-[56px] opacity-[0.09] md:right-8 md:max-w-[70px]"
-        aria-hidden
+        className="bottom-28 right-4 max-w-[58px] opacity-[0.08] md:right-8 md:bottom-36 md:max-w-[70px] md:opacity-[0.06]"
       />
 
-      {/* Haldi accents — small copies in corners */}
       <img
         data-layer="deco"
         src={haldi.assets.left}
         alt=""
-        className="absolute bottom-12 left-0 max-h-20 w-auto opacity-[0.15] sm:max-h-24 md:max-h-28"
+        className="absolute bottom-12 left-0 max-h-16 w-auto opacity-[0.22] sm:max-h-20 md:max-h-24"
         aria-hidden
       />
       <img
         data-layer="deco"
         src={haldi.assets.right}
         alt=""
-        className="absolute bottom-12 right-0 max-h-20 w-auto opacity-[0.15] sm:max-h-24 md:max-h-28"
+        className="absolute bottom-12 right-0 max-h-16 w-auto opacity-[0.22] sm:max-h-20 md:max-h-24"
         aria-hidden
-      />
-
-      {/* element.png + glow */}
-      <img
-        data-layer="deco"
-        src="/image/element.png"
-        alt=""
-        className="absolute left-1/2 top-16 w-40 -translate-x-1/2 opacity-[0.08] md:w-52"
-        aria-hidden
-      />
-      <DecorativeGlow
-        src="/image/element-light.png"
-        className="left-1/2 top-1/2 max-w-[160px] -translate-x-1/2 -translate-y-1/2 opacity-[0.1] md:max-w-[200px]"
       />
 
       <div className="relative z-10 mx-auto max-w-3xl">
@@ -94,7 +64,7 @@ export default function SectionHaldi() {
         )}
 
         <motion.p
-          className="mb-4 text-center text-[10px] uppercase tracking-[0.25em] text-amber-700/70 sm:mb-5 sm:text-xs"
+          className="mb-4 text-center font-body text-[10px] font-medium uppercase tracking-[0.25em] text-amber-700/70 sm:mb-5 sm:text-xs"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
@@ -123,7 +93,7 @@ export default function SectionHaldi() {
         </motion.p>
 
         <motion.p
-          className="mx-auto mt-8 max-w-xl text-center font-serif text-[15px] leading-loose text-stone-600 sm:mt-10 sm:text-base md:mt-12"
+          className="mx-auto mt-8 max-w-xl text-center font-body text-[15px] leading-loose text-stone-600 sm:mt-10 sm:text-base md:mt-12"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
