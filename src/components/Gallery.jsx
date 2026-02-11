@@ -1,11 +1,9 @@
 /**
  * Chapter VII · Frames. Layered elements, film-strip, flowers, light.
  */
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { gallery } from '../data/content'
 import { DecorativeFlower, DecorativeGlow } from './DecorativeLayer'
-import SectionDivider from './SectionDivider'
 
 const images = [
   { src: '/image/ronir-jule-1.jpeg', alt: 'Ronir and Jule' },
@@ -15,27 +13,32 @@ const images = [
 const ease = [0.22, 1, 0.36, 1]
 
 export default function Gallery() {
-  const sectionRef = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end end'],
-  })
-
   return (
     <section
-      ref={sectionRef}
-      className="relative min-h-[240vh] overflow-hidden bg-stone-900 sm:min-h-[260vh] md:min-h-[280vh] lg:min-h-[300vh]"
+      className="relative min-h-screen overflow-hidden bg-stone-900"
       aria-labelledby="gallery-heading"
     >
       {/* Subtle bg-2 layer */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.12] md:bg-[position:50%_35%] lg:bg-[position:50%_30%]"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.12]"
         style={{ backgroundImage: "url('/image/bg-2.jpeg')" }}
       />
 
       {/* Section dividers */}
-      <SectionDivider className="opacity-[0.14]" />
-      <SectionDivider position="bottom" className="opacity-[0.1]" />
+      <img
+        data-layer="deco"
+        src="/image/element-top-flower-bg.png"
+        alt=""
+        className="absolute left-0 top-0 w-full max-w-2xl opacity-[0.14] md:max-w-3xl"
+        aria-hidden
+      />
+      <img
+        data-layer="deco"
+        src="/image/element-top-flower-bg.png"
+        alt=""
+        className="absolute bottom-0 left-0 w-full max-w-2xl rotate-180 opacity-[0.1] md:max-w-3xl"
+        aria-hidden
+      />
 
       {/* Flowers — corners */}
       <DecorativeFlower
@@ -90,7 +93,7 @@ export default function Gallery() {
         className="left-1/2 top-1/2 max-w-[180px] -translate-x-1/2 -translate-y-1/2 opacity-[0.12] md:max-w-[220px]"
       />
 
-      <div className="relative z-10 sticky top-0 flex min-h-screen flex-col items-center justify-center px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24">
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24">
         <motion.p
           className="mb-4 text-center text-[10px] uppercase tracking-[0.25em] text-amber-200/60 sm:mb-5 sm:text-xs"
           initial={{ opacity: 0, y: 16 }}
@@ -115,7 +118,7 @@ export default function Gallery() {
 
         <div className="mt-12 flex w-full max-w-4xl flex-col items-center gap-10 sm:mt-14 sm:gap-12 md:mt-16 md:flex-row md:justify-center md:gap-8 lg:gap-10">
           {images.map((item, i) => (
-            <FilmStripCard key={item.src} {...item} index={i} scrollYProgress={scrollYProgress} />
+            <FilmStripCard key={item.src} {...item} index={i} />
           ))}
         </div>
 
@@ -133,21 +136,14 @@ export default function Gallery() {
   )
 }
 
-function FilmStripCard({ src, alt, index, scrollYProgress }) {
-  const start = 0.18 + index * 0.26
-  const end = start + 0.2
-  const opacity = useTransform(scrollYProgress, [start, end], [0.3, 1])
-  const scale = useTransform(scrollYProgress, [start, end], [0.96, 1])
-  const filter = useTransform(
-    scrollYProgress,
-    [start, end],
-    ['blur(8px)', 'blur(0px)'],
-  )
-
+function FilmStripCard({ src, alt, index }) {
   return (
     <motion.div
       className="relative w-full max-w-[280px] overflow-hidden rounded-xl sm:max-w-[320px] md:max-w-[300px] lg:max-w-sm"
-      style={{ opacity, scale }}
+      initial={{ opacity: 0.3, scale: 0.96 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="relative">
         <img
@@ -160,7 +156,10 @@ function FilmStripCard({ src, alt, index, scrollYProgress }) {
           src={src}
           alt={alt}
           className="relative z-10 aspect-[3/4] w-full object-cover"
-          style={{ filter }}
+          initial={{ filter: 'blur(8px)' }}
+          whileInView={{ filter: 'blur(0px)' }}
+          viewport={{ amount: 0.4 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           loading="lazy"
         />
       </div>
