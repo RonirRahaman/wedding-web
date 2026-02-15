@@ -49,28 +49,30 @@ export default function Greeting() {
         >
           {greeting.intro}
         </motion.p>
-        <motion.img
-          src="/image/greet-assalamualaikum.png"
-          alt="Assalamualaikum — a warm welcome"
-          className="relative z-10 max-w-[260px] object-contain sm:max-w-[300px] md:max-w-[360px]"
-          loading="lazy"
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        />
-        <motion.img
-          data-layer="deco"
-          src="/image/sun-glasses.png"
-          alt=""
-          className="relative z-10 mt-4 max-w-[80px] object-contain md:max-w-[100px]"
-          loading="lazy"
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 0.5, scale: 1 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          aria-hidden
-        />
+        <div className="relative">
+          <motion.img
+            src="/image/greet-assalamualaikum.png"
+            alt="Assalamualaikum — a warm welcome"
+            className="relative z-10 max-w-[260px] object-contain sm:max-w-[300px] md:max-w-[360px]"
+            loading="lazy"
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          />
+          {/* <motion.img
+            data-layer="deco"
+            src="/image/sun-glasses.png"
+            alt=""
+            className="absolute left-1/3 top-1/4 z-20 max-w-[80px] -translate-x-1/2 -translate-y-1/2 object-contain md:max-w-[100px]"
+            loading="lazy"
+            initial={{ opacity: 0, scale: 0.5, y: -20 }}
+            whileInView={{ opacity: 0.6, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            aria-hidden
+          /> */}
+        </div>
         <motion.p
           className="font-body text-[15px] leading-loose text-stone-500 sm:text-base"
           initial={{ opacity: 0, y: 16 }}

@@ -32,8 +32,8 @@ export const events = [
     poeticLine: 'Two souls. One promise.',
     venue: 'Akashdip Guest House',
     address: 'Dakshin Sagarbar, Purba Medinipur, West Bengal 721151',
-    lat: 21.94,
-    lng: 87.78,
+    lat: 22.4146738,
+    lng: 87.8129379,
     mapLabel: 'Akashdip Guest House',
   },
   {

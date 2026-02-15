@@ -110,6 +110,7 @@ export default function Hero() {
         >
           Save the Date
         </motion.button>
+        <br/>
       </motion.div>
     </section>
   )
