@@ -1,81 +1,43 @@
 /**
- * Chapter II — Greeting. Layered elements, warm embrace.
+ * Chapter II — Greeting. Video background of the couple, warm embrace.
  */
 import { motion } from 'framer-motion'
-import { DecorativeFlower } from './DecorativeLayer'
-import SectionDivider from './SectionDivider'
 import { greeting } from '../data/content'
 
 export default function Greeting() {
   return (
     <section
-      className="relative flex min-h-[55vh] flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-stone-50 to-amber-50/30 px-4 py-20 sm:min-h-[60vh] sm:px-6 sm:py-24 md:min-h-[65vh] md:px-8 md:py-28"
+      className="relative flex min-h-[70vh] flex-col items-center overflow-hidden px-4 py-12 sm:min-h-[75vh] sm:px-6 sm:py-16 md:min-h-[80vh] md:px-8 md:py-20"
       aria-labelledby="greeting-heading"
     >
-      <SectionDivider className="opacity-[0.1]" />
-      <SectionDivider position="bottom" className="opacity-[0.06]" />
-
-      <img
-        data-layer="deco"
-        src="/image/element-religion.png"
-        alt=""
-        className="absolute right-0 top-1/2 w-32 -translate-y-1/2 opacity-[0.07] md:w-40 md:opacity-[0.08]"
+      {/* Video background — couple (place your video at public/video/couple.mp4) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-stone-100 to-amber-50/50" />
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
         aria-hidden
-      />
-      <img
-        data-layer="deco"
-        src="/image/reliion-element.png"
-        alt=""
-        className="absolute bottom-16 left-0 w-28 opacity-[0.06] md:bottom-20 md:w-36 md:opacity-[0.07]"
-        aria-hidden
-      />
+      >
+        <source src="/image/video.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0" />
 
-      <DecorativeFlower
-        src="/image/element-flower.png"
-        className="right-4 top-20 max-w-[60px] opacity-[0.07] md:right-10 md:max-w-[76px] md:opacity-[0.06]"
-      />
-      <DecorativeFlower
-        src="/image/element-flower2.png"
-        className="bottom-24 left-4 max-w-[56px] opacity-[0.07] md:left-10 md:max-w-[70px] md:opacity-[0.06]"
-      />
-
-      <div className="relative z-10 flex max-w-xl flex-col items-center gap-10 text-center sm:gap-12 md:gap-14">
+      {/* Text only — frames the video, no card */}
+      <div className="relative z-10 flex min-h-full flex-col justify-between px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
         <motion.p
-          className="font-serif text-base italic leading-loose text-stone-600 sm:text-lg"
-          initial={{ opacity: 0, y: 20 }}
+          className="max-w-xl text-center font-serif text-lg font-semibold italic leading-relaxed text-white drop-shadow-md sm:text-xl md:text-2xl"
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           {greeting.intro}
         </motion.p>
-        <div className="relative">
-          <motion.img
-            src="/image/greet-assalamualaikum.png"
-            alt="Assalamualaikum — a warm welcome"
-            className="relative z-10 max-w-[260px] object-contain sm:max-w-[300px] md:max-w-[360px]"
-            loading="lazy"
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          />
-          {/* <motion.img
-            data-layer="deco"
-            src="/image/sun-glasses.png"
-            alt=""
-            className="absolute left-1/3 top-1/4 z-20 max-w-[80px] -translate-x-1/2 -translate-y-1/2 object-contain md:max-w-[100px]"
-            loading="lazy"
-            initial={{ opacity: 0, scale: 0.5, y: -20 }}
-            whileInView={{ opacity: 0.6, scale: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            aria-hidden
-          /> */}
-        </div>
         <motion.p
-          className="font-body text-[15px] leading-loose text-stone-500 sm:text-base"
-          initial={{ opacity: 0, y: 16 }}
+          className="max-w-xl text-center font-body text-base font-semibold leading-relaxed text-amber-50 drop-shadow-md sm:text-lg md:text-xl"
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}

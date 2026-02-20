@@ -105,7 +105,7 @@ export default function Hero() {
         </motion.div>
         <motion.button
           onClick={scrollToSaveTheDates}
-          className="mt-8 rounded-xl bg-amber-500 px-8 py-4 font-body text-sm font-semibold text-stone-900 transition hover:bg-amber-400 active:scale-[0.98] sm:mt-10 sm:text-base"
+          className="mt-8 rounded-xl bg-amber-500 px-8 py-4 font-body text-sm font-semibold text-stone-900 transition hover:bg-amber-400 active:scale-[0.98] sm:mt-10 sm:text-base mb-3"
           variants={fadeIn}
         >
           Save the Date
