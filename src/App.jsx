@@ -28,7 +28,7 @@ export default function App() {
       <ScrollProgress />
       <CelebrationEffect />
       <MobileNav />
-      <main id="main" className="pb-20 md:pb-0">
+      <main id="main" className="md:pb-0">
         <Hero />
         <Greeting />
         <MeetCouple />

@@ -14,7 +14,7 @@ const formatDate = (str) =>
     month: 'long',
     year: 'numeric',
   })
-const boubhatMapsUrl = `https://www.google.com/maps/@${boubhat.lat},${boubhat.lng},15z`
+const boubhatMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(boubhat.address)}`
 const ease = [0.22, 1, 0.36, 1]
 
 export default function SectionBoubhat() {

@@ -18,6 +18,11 @@ export const events = [
     /** One line for cards / emphasis */
     poeticLine: 'Where yellow meets joy.',
     assets: { left: '/image/girl-haldi.png', right: '/image/man-haldi.png' },
+    venue: 'Baragar',
+    address: 'Debra Bazar, Pachim Medinipur, West Bengal 721126',
+    lat: 22.388825,
+    lng: 87.574152,
+    mapLabel: 'Baragar, Debra Bazar'
   },
   {
     id: 'shadi',

@@ -7,7 +7,7 @@ import { greeting } from '../data/content'
 export default function Greeting() {
   return (
     <section
-      className="relative flex min-h-[70vh] flex-col items-center overflow-hidden px-4 py-12 sm:min-h-[75vh] sm:px-6 sm:py-16 md:min-h-[80vh] md:px-8 md:py-20"
+      className="relative flex min-h-[70vh] flex-col items-center justify-end overflow-hidden px-4 pb-12 sm:min-h-[75vh] sm:px-6 sm:pb-16 md:min-h-[80vh] md:px-8 md:pb-20"
       aria-labelledby="greeting-heading"
     >
       {/* Video background — couple (place your video at public/video/couple.mp4) */}
@@ -24,8 +24,8 @@ export default function Greeting() {
       </video>
       <div className="absolute inset-0" />
 
-      {/* Text only — frames the video, no card */}
-      <div className="relative z-10 flex min-h-full flex-col justify-between px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
+      {/* Text only — at bottom of section */}
+      <div className="relative z-10 flex flex-col gap-4 pb-4 sm:gap-5 sm:pb-6 md:gap-6">
         <motion.p
           className="max-w-xl text-center font-serif text-lg font-semibold italic leading-relaxed text-white drop-shadow-md sm:text-xl md:text-2xl"
           initial={{ opacity: 0, y: 12 }}
