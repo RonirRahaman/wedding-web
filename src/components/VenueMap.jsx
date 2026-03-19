@@ -20,7 +20,7 @@ const osmAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright"
 export default function VenueMap({ lat, lng, label, address, zoom = 15 }) {
   const [mounted, setMounted] = useState(false)
   const center = [lat, lng]
-  const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address || label)}`
+  const gmapsUrl = `https://www.google.com/maps?q=${lat},${lng}`
 
   useEffect(() => {
     setMounted(true)

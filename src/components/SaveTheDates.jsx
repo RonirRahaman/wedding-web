@@ -14,8 +14,8 @@ function formatDate(str) {
 }
 
 function getMapsUrl(ev) {
+  if (ev.lat != null && ev.lng != null) return `https://www.google.com/maps?q=${ev.lat},${ev.lng}`
   if (ev.address) return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ev.address)}`
-  if (ev.lat != null && ev.lng != null) return `https://www.google.com/maps/search/?api=1&query=${ev.lat},${ev.lng}`
   return null
 }
 

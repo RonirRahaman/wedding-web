@@ -14,7 +14,8 @@ const formatDate = (str) =>
     month: 'long',
     year: 'numeric',
   })
-const shadiMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(shadi.address)}`
+  const shadiMapsUrl = `https://www.google.com/maps?q=${shadi.lat},${shadi.lng}`
+// const shadiMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(shadi.address)}`
 const ease = [0.22, 1, 0.36, 1]
 
 export default function SectionShadi() {
