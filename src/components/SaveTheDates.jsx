@@ -24,9 +24,14 @@ const AUTO_ROTATE_INTERVAL = 4000 // 4 seconds
 
 export default function SaveTheDates() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [autoRotate, setAutoRotate] = useState(true)
   const intervalRef = useRef(null)
+  const dragStartXRef = useRef(0)
+  const didSwipeRef = useRef(false)
 
   useEffect(() => {
+    if (!autoRotate) return
+
     // Auto-rotate carousel
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % events.length)
@@ -37,17 +42,12 @@ export default function SaveTheDates() {
         clearInterval(intervalRef.current)
       }
     }
-  }, [])
+  }, [autoRotate])
 
   const goToSlide = (index) => {
     setCurrentIndex(index)
-    // Reset auto-rotate timer when manually changing slide
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current)
-    }
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % events.length)
-    }, AUTO_ROTATE_INTERVAL)
+    // Once the user interacts, stop auto-rotating.
+    setAutoRotate(false)
   }
 
   return (
@@ -108,7 +108,31 @@ export default function SaveTheDates() {
         <br />
       </div>
 
-      <div className="relative min-h-[45vh] overflow-visible px-4 pb-16 sm:min-h-[50vh] sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12">
+      <div
+        className="relative min-h-[45vh] overflow-visible px-4 pb-16 sm:min-h-[50vh] sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12"
+        style={{ touchAction: 'pan-y' }}
+        onPointerDown={(e) => {
+          dragStartXRef.current = e.clientX
+          didSwipeRef.current = false
+          setAutoRotate(false) // stop auto as soon as the user touches/drags
+        }}
+        onPointerUp={(e) => {
+          const deltaX = e.clientX - dragStartXRef.current
+          const THRESHOLD_PX = 50
+
+          if (Math.abs(deltaX) < THRESHOLD_PX) return
+
+          didSwipeRef.current = true
+
+          if (deltaX < 0) {
+            // Swipe left -> next card
+            goToSlide((currentIndex + 1) % events.length)
+          } else {
+            // Swipe right -> previous card
+            goToSlide((currentIndex - 1 + events.length) % events.length)
+          }
+        }}
+      >
         <div className="relative flex h-full min-h-[45vh] items-center justify-center overflow-visible sm:min-h-[50vh]">
           {events.map((ev, i) => {
             const mapsUrl = getMapsUrl(ev)
